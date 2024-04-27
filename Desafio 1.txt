@@ -34,10 +34,3 @@ Forgot password functionality
     When Click Element    xpath=//a[@id='forgot-password-link']
     Then Page Should Contain    Password Reset
     And Close Browser
-
-
------------------------------------------------------------------------------
-
-Esses casos de teste em Gherkin são escritos em arquivos de recursos do Robot Framework. 
-O Robot Framework é uma estrutura de automação de teste que suporta a execução de testes baseados em palavras-chave, o que torna a escrita dos casos de teste bastante legível e compreensível. 
-Os casos de teste acima testam a funcionalidade de login com credenciais válidas e inválidas, além de verificar a funcionalidade de recuperação de senha.

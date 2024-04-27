@@ -1,0 +1,43 @@
+*** Settings ***
+Documentation     Test cases for Login Functionality
+Library           SeleniumLibrary
+Library           OperatingSystem
+
+*** Variables ***
+${BROWSER}        Chrome
+${LOGIN_URL}      http://example.com/login
+${USERNAME}       example_user
+${PASSWORD}       example_password
+
+*** Test Cases ***
+Successful login with valid credentials
+    [Documentation]    Test the successful login with valid credentials
+    Given Open Browser    ${LOGIN_URL}    ${BROWSER}
+    When Input Text    id=username    ${USERNAME}
+    And Input Password    id=password    ${PASSWORD}
+    And Click Button    xpath=//button[@id='login-btn']
+    Then Page Should Contain    Dashboard
+    And Close Browser
+
+Unsuccessful login with invalid credentials
+    [Documentation]    Test the unsuccessful login with invalid credentials
+    Given Open Browser    ${LOGIN_URL}    ${BROWSER}
+    When Input Text    id=username    invalid_username
+    And Input Password    id=password    invalid_password
+    And Click Button    xpath=//button[@id='login-btn']
+    Then Page Should Contain    Invalid username or password
+    And Close Browser
+
+Forgot password functionality
+    [Documentation]    Test the forgot password functionality
+    Given Open Browser    ${LOGIN_URL}    ${BROWSER}
+    When Click Element    xpath=//a[@id='forgot-password-link']
+    Then Page Should Contain    Password Reset
+    And Close Browser
+
+
+-----------------------------------------------------------------------------
+
+Esses casos de teste em Gherkin são escritos em arquivos de recursos do Robot Framework. 
+O Robot Framework é uma estrutura de automação de teste que suporta a execução de testes baseados em palavras-chave, o que torna a escrita dos casos de teste bastante legível e compreensível. 
+Os casos de teste acima testam a funcionalidade de login com credenciais válidas e inválidas, além de verificar a funcionalidade de recuperação de senha.
